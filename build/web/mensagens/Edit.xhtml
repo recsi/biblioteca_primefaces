@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MensagensEditDlg" widgetVar="MensagensEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditMensagensTitle}">
+            <h:form id="MensagensEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{mensagensController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditMensagensLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{mensagensController.selected.id}" title="#{bundle.EditMensagensTitle_id}" required="true" requiredMessage="#{bundle.EditMensagensRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditMensagensLabel_nome}" for="nome" />
+                        <p:inputText id="nome" value="#{mensagensController.selected.nome}" title="#{bundle.EditMensagensTitle_nome}" required="true" requiredMessage="#{bundle.EditMensagensRequiredMessage_nome}"/>
+                        <p:outputLabel value="#{bundle.EditMensagensLabel_contato}" for="contato" />
+                        <p:inputText id="contato" value="#{mensagensController.selected.contato}" title="#{bundle.EditMensagensTitle_contato}" required="true" requiredMessage="#{bundle.EditMensagensRequiredMessage_contato}"/>
+                        <p:outputLabel value="#{bundle.EditMensagensLabel_mensagem}" for="mensagem" />
+                        <p:inputText id="mensagem" value="#{mensagensController.selected.mensagem}" title="#{bundle.EditMensagensTitle_mensagem}" required="true" requiredMessage="#{bundle.EditMensagensRequiredMessage_mensagem}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{mensagensController.update}" value="#{bundle.Save}" update="display,:MensagensListForm:datalist,:growl" oncomplete="handleSubmit(args, 'MensagensEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MensagensEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

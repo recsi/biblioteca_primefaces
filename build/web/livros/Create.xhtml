@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LivrosCreateDlg" widgetVar="LivrosCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateLivrosTitle}">
+            <h:form id="LivrosCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{livrosController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateLivrosLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{livrosController.selected.id}" title="#{bundle.CreateLivrosTitle_id}" required="true" requiredMessage="#{bundle.CreateLivrosRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.CreateLivrosLabel_nome}" for="nome" />
+                        <p:inputText id="nome" value="#{livrosController.selected.nome}" title="#{bundle.CreateLivrosTitle_nome}" required="true" requiredMessage="#{bundle.CreateLivrosRequiredMessage_nome}"/>
+                        <p:outputLabel value="#{bundle.CreateLivrosLabel_numPaginas}" for="numPaginas" />
+                        <p:inputText id="numPaginas" value="#{livrosController.selected.numPaginas}" title="#{bundle.CreateLivrosTitle_numPaginas}" required="true" requiredMessage="#{bundle.CreateLivrosRequiredMessage_numPaginas}"/>
+                        <p:outputLabel value="#{bundle.CreateLivrosLabel_isbn}" for="isbn" />
+                        <p:inputText id="isbn" value="#{livrosController.selected.isbn}" title="#{bundle.CreateLivrosTitle_isbn}" />
+                        <p:outputLabel value="#{bundle.CreateLivrosLabel_foto}" for="foto" />
+                        <p:inputText id="foto" value="#{livrosController.selected.foto}" title="#{bundle.CreateLivrosTitle_foto}" />
+                        <p:outputLabel value="#{bundle.CreateLivrosLabel_idAutor}" for="idAutor" />
+                        <p:selectOneMenu id="idAutor" value="#{livrosController.selected.idAutor}" required="true" requiredMessage="#{bundle.EditLivrosRequiredMessage_idAutor}">
+                            <f:selectItems value="#{autoresController.itemsAvailableSelectOne}"
+                                           var="idAutorItem"
+                                           itemValue="#{idAutorItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{livrosController.create}" value="#{bundle.Save}" update="display,:LivrosListForm:datalist,:growl" oncomplete="handleSubmit(args,'LivrosCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="LivrosCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

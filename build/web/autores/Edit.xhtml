@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AutoresEditDlg" widgetVar="AutoresEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditAutoresTitle}">
+            <h:form id="AutoresEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{autoresController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditAutoresLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{autoresController.selected.id}" title="#{bundle.EditAutoresTitle_id}" required="true" requiredMessage="#{bundle.EditAutoresRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditAutoresLabel_nome}" for="nome" />
+                        <p:inputText id="nome" value="#{autoresController.selected.nome}" title="#{bundle.EditAutoresTitle_nome}" required="true" requiredMessage="#{bundle.EditAutoresRequiredMessage_nome}"/>
+                        <p:outputLabel value="#{bundle.EditAutoresLabel_foto}" for="foto" />
+                        <p:inputText id="foto" value="#{autoresController.selected.foto}" title="#{bundle.EditAutoresTitle_foto}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{autoresController.update}" value="#{bundle.Save}" update="display,:AutoresListForm:datalist,:growl" oncomplete="handleSubmit(args, 'AutoresEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AutoresEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
