@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pm="http://primefaces.org/mobile">
+
+
+    <h:head>
+        <title>Biblioteca</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>
+
+        <p:layout fullPage="true">
+            <p:layoutUnit position="center">
+
+
+
+<h:form id="formlivros">
+
+                    <p:dataTable id="livros" var="livro" value="#{livrosController.items}">
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Id" />
+                            </f:facet>
+                            <h:outputText value="#{livro.id}" />
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nome" />
+                            </f:facet>
+                            <h:outputText value="#{livro.nome}" />
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Paginas" />
+                            </f:facet>
+                            <h:outputText value="#{livro.numPaginas}" />
+                        </p:column>
+
+
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="ISBN" />
+                            </f:facet>
+                            <h:outputText value="#{livro.isbn}" />
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Autor" />
+                            </f:facet>
+                            <h:outputText value="#{livro.idAutor}" />
+                        </p:column>
+
+
+
+
+                    </p:dataTable>
+                    <p:commandButton value="Export as Excel" ajax="false">
+                        <p:dataExporter type="xls" target="livros" fileName="livros"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="Export as PDF" ajax="false" >
+                        <p:dataExporter type="pdf" target="livros" fileName="livros"/>
+                    </p:commandButton>
+                </h:form>
+
+
+            </p:layoutUnit>
+
+
+
+            <p:layoutUnit position="north" size="100">
+                <h1>Biblioteca</h1>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" size="50">
+                Desenvolvido por Renata
+            </p:layoutUnit>
+
+            <p:layoutUnit header="Menu" position="west" size="300">
+                <p:menu >
+                    <p:menuitem value="Home" url="/faces/index.xhtml"/>
+                    <p:menuitem value="Livros" url="/faces/livros/livros.xhtml"/>
+                    <p:menuitem value="Autores" url="/faces/autores/autores.xhtml"/>
+                    <p:menuitem value="Endereço" url="/faces/nossoendereco.xhtml"/>
+                    <p:menuitem value="Mensagem" url="/faces/mensagem.xhtml"/>
+                    <p:menuitem value="Relatório dos Livros" url="/faces/livros/relatorio.xhtml"/>
+                    <p:menuitem value="Show All Autores Items" url="/faces/autores/List.xhtml"/>
+                    <p:menuitem value="Show All Livros Items" url="/faces/livros/List.xhtml"/>
+                    <p:menuitem value="Show All Usuario Items" url="usuarios/List.xhtml"/>
+                </p:menu>
+            </p:layoutUnit>
+
+        </p:layout>
+
+    </h:body>
+
+</html>
+
