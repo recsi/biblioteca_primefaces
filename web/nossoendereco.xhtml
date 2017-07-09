@@ -10,6 +10,7 @@
     <h:head>
         <title>Biblioteca</title>
         <h:outputStylesheet name="css/jsfcrud.css"/>
+        <script src="http://maps.google.com/maps/api/js?sensor=true|false" type="text/javascript" />
     </h:head>
     <h:body>
 
@@ -18,19 +19,10 @@
                 <br/>
                 <br/>
                 <br/>
-                <h2>Venham conhecer a nossa biblioteca!</h2>
-                <br/>
-                <p>Somos a biblioteca mais completa da região, temos um ambiente super aconchegante para que você posso relaxar e curtir uma excelente leitura.</p>
-                <br/>
-                <br/>
-                <br/>
-                <h2>Nossa coleção</h2>
-                <br/>
-                <p>Nossa coleção é mais completa pois estamos sempre atualizando nosso acervo com os títulos mais recentes, além de buscarmos sempre aquele livro antigo mais adorado.</p>
-                <br/>
-                <br/>
-                <br/>
-                <h:graphicImage value="/images/index.jpeg"/>
+                <p>Endereço: Avenida João Valentim Pascoal 100 - Centro, Ipatinga - MG</p>
+
+                <p:gmap center="-19.4816626,-42.5213363" zoom="15" type="hybrid"
+                        style="width:600px;height:400px" />
                 <br/>
                 <br/>
                 <br/>
